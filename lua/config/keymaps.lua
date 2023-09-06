@@ -14,5 +14,18 @@ vim.keymap.set('n', '<leader>wk', '<C-w>k')
 vim.keymap.set('n', '<leader>wj', '<C-w>j')
 vim.keymap.set('n', '<leader>wl', '<C-w>l')
 -- Needed for markdown
-vim.opt.wrap = true
-vim.opt.linebreak = true
+-- vim.opt.wrap = true
+-- vim.opt.linebreak = true
+-- Toggle for linebreak
+local Util = require('lazyvim.util')
+vim.keymap.set('n', '<leader>ub', function()
+  Util.toggle('linebreak')
+end, { desc = 'Toggle linebreak' })
+-- LSP Suggestion Prompt Accept with Tab
+-- Doesnt seem to work
+-- vim.api.nvim_set_keymap(
+--   'i',
+--   '<Tab>',
+--   'pumvisible() ? "<C-n>" : "<Tab>"',
+--   { expr = true }
+-- )
