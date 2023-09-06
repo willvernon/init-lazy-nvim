@@ -16,7 +16,7 @@ return {
     local cmp = require('cmp')
 
     opts.mapping = vim.tbl_extend('force', opts.mapping, {
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<Enter>'] = cmp.mapping.close(),
       ['<Tab>'] = function(fallback)
         -- Don't block <CR> if signature help is active
         -- https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/issues/13
@@ -44,7 +44,6 @@ return {
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         elseif has_words_before() then
-          cmp.complete()
         else
           fallback()
         end

@@ -18,7 +18,3 @@ local Util = require('lazyvim.util')
 vim.keymap.set('n', '<leader>ub', function()
   Util.toggle('linebreak')
 end, { desc = 'Toggle linebreak' })
-
-vim.g.copilot_no_tab_map = true
-vim.g.copilot_assume_mapped = true
-vim.g.copilot_tab_fallback = ''
