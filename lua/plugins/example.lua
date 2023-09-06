@@ -34,9 +34,7 @@ return {
   {
     'simrat39/symbols-outline.nvim',
     cmd = 'SymbolsOutline',
-    keys = {
-      { '<leader>cs', '<cmd>SymbolsOutline<cr>', desc = 'Symbols Outline' },
-    },
+    keys = { { '<leader>cs', '<cmd>SymbolsOutline<cr>', desc = 'Symbols Outline' } },
     config = true,
   },
 
@@ -47,9 +45,7 @@ return {
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require('cmp')
-      opts.sources = cmp.config.sources(
-        vim.list_extend(opts.sources, { { name = 'emoji' } })
-      )
+      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = 'emoji' } }))
     end,
   },
 
@@ -110,12 +106,7 @@ return {
         require('lazyvim.util').on_attach(function(_, buffer)
           -- stylua: ignore
           vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
-          vim.keymap.set(
-            'n',
-            '<leader>cR',
-            'TypescriptRenameFile',
-            { desc = 'Rename File', buffer = buffer }
-          )
+          vim.keymap.set('n', '<leader>cR', 'TypescriptRenameFile', { desc = 'Rename File', buffer = buffer })
         end)
       end,
     },
@@ -241,12 +232,7 @@ return {
       local has_words_before = function()
         unpack = unpack or table.unpack
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0
-          and vim.api
-              .nvim_buf_get_lines(0, line - 1, line, true)[1]
-              :sub(col, col)
-              :match('%s')
-            == nil
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
       end
 
       local luasnip = require('luasnip')
