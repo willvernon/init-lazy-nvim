@@ -27,7 +27,10 @@ return {
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-c>'] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.abort(),
-          ['<tab>'] = cmp.mapping.confirm(), --not sure if this is doing anything check keymaps for the one that is working. -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ['<tab>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          }), --not sure if this is doing anything check keymaps for the one that is working. -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
           ['<S-Tab>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
