@@ -22,5 +22,5 @@ vim.keymap.set('n', '<leader>ub', function()
   Util.toggle('linebreak')
 end, { desc = 'Toggle linebreak' })
 -- LSP Suggestion Prompt Accept with Tab
-vim.keymap.set('i', '<Tab>', 'pumvisible() ? "<CR>" : "<Tab>"', { expr = true })
-vim.keymap.set('i', '<Tab>', '<CR>', { expr = true })
+-- vim.keymap.set('i', '<Tab>', 'pumvisible() ? "<CR>" : "<Tab>"', { expr = true })
+-- vim.keymap.set('i', '<Tab>', '<CR>', { expr = true })
