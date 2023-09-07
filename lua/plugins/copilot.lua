@@ -4,11 +4,35 @@ return {
     cmd = 'Copilot',
     build = ':Copilot auth',
     opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
+      panel = {
+        keymap = {
+          jump_next = '<c-j>',
+          jump_prev = '<c-k>',
+          accept = '<Tab>',
+          refresh = 'r',
+          open = '<M-CR>',
+        },
+      },
+      suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+          accept = '<Tab>',
+          next = '<c-j>',
+          prev = '<c-k>',
+          dismiss = '<CR>',
+        },
+      },
       filetypes = {
+        yaml = false,
         markdown = true,
-        help = true,
+        help = false,
+        gitcommit = false,
+        gitrebase = false,
+        hgcommit = false,
+        svn = false,
+        cvs = false,
+        ['.'] = false,
       },
     },
   },
