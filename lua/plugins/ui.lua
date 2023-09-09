@@ -165,16 +165,16 @@ return {
   },
 
   -- style windows with different colorschemes
-  {
-    'folke/styler.nvim',
-    event = 'VeryLazy',
-    opts = {
-      themes = {
-        markdown = { colorscheme = 'catppuccin' },
-        help = { colorscheme = 'catppuccin', background = 'dark' },
-      },
-    },
-  },
+  -- {
+  --   'folke/styler.nvim',
+  --   event = 'VeryLazy',
+  --   opts = {
+  --     themes = {
+  --       markdown = { colorscheme = 'catppuccin' },
+  --       help = { colorscheme = 'catppuccin', background = 'dark' },
+  --     },
+  --   },
+  -- },
 
   -- silly drops
   {

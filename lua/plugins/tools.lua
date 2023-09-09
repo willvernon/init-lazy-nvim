@@ -26,4 +26,7 @@ return {
   {
     'theprimeagen/vim-be-good',
   },
+  {
+    'mbbill/undotree',
+  },
 }

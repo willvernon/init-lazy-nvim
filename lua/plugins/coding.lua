@@ -40,7 +40,7 @@ return {
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
           -- ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
           -- ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
           ['<Esc>'] = cmp.mapping(function(fallback)
@@ -74,14 +74,14 @@ return {
             return item
           end,
         },
-        experimental = { ghost_text = true },
+        experimental = { ghost_text = false },
         sorting = defaults.sorting,
       }
     end,
   },
 
-  {
-    'Exafunction/codeium.vim',
-    event = 'BufEnter',
-  },
+  -- {
+  --   'Exafunction/codeium.vim',
+  --   event = 'BufEnter',
+  -- },
 }
