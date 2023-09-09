@@ -11,7 +11,10 @@ return {
         -- toggleterm / lazyterm at the bottom with a height of 40% of the screen
         {
           ft = 'toggleterm',
-          size = { height = 0.3 },
+          size = {
+            height = 20,
+          },
+          pinned = true,
           -- exclude floating windows
           filter = function(buf, win)
             return vim.api.nvim_win_get_config(win).relative == ''
@@ -62,18 +65,21 @@ return {
           filter = function(buf)
             return vim.b[buf].neo_tree_source == 'buffers'
           end,
-          pinned = false,
+          pinned = true,
           open = 'Neotree position=top buffers',
         },
         {
           ft = 'Outline',
-          pinned = true,
+          pinned = false,
           open = 'SymbolsOutlineOpen',
         },
         -- any other neo-tree windows
         'neo-tree',
       },
     },
+  },
+  {
+    'simrat39/symbols-outline.nvim',
   },
   -- floating winbar
   {
@@ -194,4 +200,5 @@ return {
   --   end,
   -- },
   { 'akinsho/toggleterm.nvim', version = '*', config = true },
+  { 'nvim-pack/nvim-spectre' },
 }
