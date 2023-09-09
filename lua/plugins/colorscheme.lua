@@ -5,7 +5,55 @@ return {
   {
     'sainnhe/sonokai',
   },
-
+  {
+    "loctvl842/monokai-pro.nvim",
+    lazy = false,
+    priority = 1000,
+    keys = { { "<leader>c", "<cmd>MonokaiProSelect<cr>", desc = "Select Moonokai pro filter" } },
+    config = function()
+      local monokai = require("monokai-pro")
+      monokai.setup({
+        transparent_background = false,
+        devicons = true,
+        filter = "octagon", -- classic | octagon | pro | machine | ristretto | spectrum
+        day_night = {
+          enable = true,
+          day_filter = "ristretto",
+          night_filter = "octagon",
+        },
+        inc_search = "background", -- underline | background
+        background_clear = { "nvim-tree", "neo-tree", "bufferline" },
+        plugins = {
+          bufferline = {
+            underline_selected = true,
+            underline_visible = true,
+            underline_fill = true,
+            bold = false,
+          },
+          indent_blankline = {
+            context_highlight = "pro", -- default | pro
+            context_start_underline = true,
+          },
+        },
+        override = function(c)
+          return {
+            ColorColumn = { bg = c.editor.background },
+            -- Mine
+            DashboardRecent = { fg = c.base.magenta },
+            DashboardProject = { fg = c.base.blue },
+            DashboardConfiguration = { fg = c.base.white },
+            DashboardSession = { fg = c.base.green },
+            DashboardLazy = { fg = c.base.cyan },
+            DashboardServer = { fg = c.base.yellow },
+            DashboardQuit = { fg = c.base.red },
+            -- Codeium Icon
+            CmpItemKindVariable = { fg = "#09B6A2" },
+          }
+        end,
+      })
+     -- monokai.load()
+    end,
+  },
   --
   -- vscode
   --
@@ -33,10 +81,10 @@ return {
     'navarasu/onedark.nvim',
     opts = {
       -- Main options --
-      style = 'deep', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-      transparent = false, -- Show/hide background
-      term_colors = true, -- Change terminal color as per the selected theme style
-      ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+      style = 'deep',               -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+      transparent = false,          -- Show/hide background
+      term_colors = true,           -- Change terminal color as per the selected theme style
+      ending_tildes = false,        -- Show the end-of-buffer tildes. By default they are hidden
       cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
 
       -- toggle theme style ---
@@ -70,7 +118,7 @@ return {
       -- Custom Highlights --
       colors = {
         bright_orange = '#ff8800', -- define a new color
-        salmon = '#B55040', -- redefine an existing color
+        salmon = '#B55040',        -- redefine an existing color
         var_red = '#EA4447',
         selectors = '#F57474',
         classes = '#BC72BB',
@@ -95,8 +143,8 @@ return {
 
       -- Plugins Config --
       diagnostics = {
-        darker = true, -- darker colors for diagnostic
-        undercurl = true, -- use undercurl instead of underline for diagnostics
+        darker = true,     -- darker colors for diagnostic
+        undercurl = true,  -- use undercurl instead of underline for diagnostics
         background = true, -- use background color for virtual text
       },
     },
