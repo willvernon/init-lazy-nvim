@@ -11,3 +11,4 @@ vim.g.sonokai_style = 'andromeda'
 vim.g.sonokai_enable_italic = 1
 vim.g.sonokai_better_performacne = 1
 vim.sonokai_disable_terminal_colors = 1
+
