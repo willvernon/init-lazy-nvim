@@ -24,3 +24,9 @@ end, { desc = 'Toggle linebreak' })
 -- LSP Suggestion Prompt Accept with Tab
 -- vim.keymap.set('i', '<Tab>', 'pumvisible() ? "<CR>" : "<Tab>"', { expr = true })
 -- vim.keymap.set('i', '<Tab>', '<CR>', { expr = true })
+--
+-- greatest remap ever
+vim.keymap.set('x', '<leader>p', [["_dP]])
+vim.keymap.set({ 'n', 'v' }, '<leader>du', [["_d]])
+-- UndoTree
+vim.keymap.set('n', '<leader>cu', vim.cmd.UndotreeToggle)
