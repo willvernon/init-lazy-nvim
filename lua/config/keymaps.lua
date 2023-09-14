@@ -27,6 +27,6 @@ end, { desc = 'Toggle linebreak' })
 --
 -- greatest remap ever
 vim.keymap.set('x', '<leader>p', [["_dP]])
-vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
+vim.keymap.set({ 'n', 'v' }, '<leader>du', [["_d]])
 -- UndoTree
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+vim.keymap.set('n', '<leader>cu', vim.cmd.UndotreeToggle)

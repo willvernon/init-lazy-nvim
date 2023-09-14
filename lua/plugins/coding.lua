@@ -1,4 +1,32 @@
 return {
+
+  {
+    'laytan/tailwind-sorter.nvim',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-lua/plenary.nvim',
+    },
+    build = 'cd formatter && npm i && npm run build',
+    config = {},
+  },
+  {
+    'themaxmarchuk/tailwindcss-colors.nvim',
+    config = function()
+      require('tailwindcss-colors').setup()
+    end,
+  },
+  {
+    'roobert/tailwindcss-colorizer-cmp.nvim',
+  },
+  {
+    'github/copilot.vim',
+    config = function()
+      vim.cmd('imap <silent><script><expr> <S-CR> copilot#Accept("\\<CR>")')
+      vim.g.copilot_no_tab_map = true
+      vim.g.copilot_enabled = true
+    end,
+  },
+
   -- {
   --   "huggingface/llm.nvim",
   --   opts = {
@@ -40,7 +68,7 @@ return {
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.abort(),
-          ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ['<Tab>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
           -- ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
           -- ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
           ['<Esc>'] = cmp.mapping(function(fallback)
@@ -58,7 +86,110 @@ return {
         formatting = {
           fields = { 'kind', 'abbr', 'menu' },
           format = function(entry, item)
-            local icons = require('lua.util.icons')
+            local icons = {
+              diagnostics = {
+                error = '',
+                warn = '',
+                hint = '',
+                info = '',
+              },
+              git = {
+                added = '',
+                modified = '',
+                removed = '',
+                renamed = '➜',
+                untracked = '',
+                ignored = '',
+                unstaged = 'U',
+                staged = '',
+                conflict = '',
+                deleted = '',
+              },
+              gitsigns = {
+                add = '┃',
+                change = '┋',
+                delete = '',
+                topdelhfe = '',
+                changedelete = '┃',
+                untracked = '┃',
+              },
+              kinds = {
+                Array = '',
+                Boolean = '',
+                Class = '',
+                Color = '',
+                Constant = '',
+                Constructor = '',
+                Copilot = '',
+                Enum = '',
+                EnumMember = '',
+                Event = '',
+                Field = '',
+                File = '',
+                Folder = '',
+                Function = '',
+                Interface = '',
+                Key = '',
+                Keyword = '',
+                Method = '',
+                Module = '',
+                Namespace = '',
+                Null = '',
+                Number = '',
+                Object = '',
+                Operator = '',
+                Package = '',
+                Property = '',
+                Reference = '',
+                Snippet = '',
+                String = '',
+                Struct = '',
+                Text = '',
+                TypeParameter = '',
+                Unit = '',
+                Value = '',
+                Variable = '',
+                Macro = '', -- Macro
+              },
+              borders = {
+                --- @class BorderIcons
+                thin = {
+                  top = '▔',
+                  right = '▕',
+                  bottom = '▁',
+                  left = '▏',
+                  top_left = '🭽',
+                  top_right = '🭾',
+                  bottom_right = '🭿',
+                  bottom_left = '🭼',
+                },
+                ---@type BorderIcons
+                empty = {
+                  top = ' ',
+                  right = ' ',
+                  bottom = ' ',
+                  left = ' ',
+                  top_left = ' ',
+                  top_right = ' ',
+                  bottom_right = ' ',
+                  bottom_left = ' ',
+                },
+                ---@type BorderIcons
+                thick = {
+                  top = '▄',
+                  right = '█',
+                  bottom = '▀',
+                  left = '█',
+                  top_left = '▄',
+                  top_right = '▄',
+                  bottom_right = '▀',
+                  bottom_left = '▀',
+                },
+              },
+              misc = {
+                codeium = '󰘦 ',
+              },
+            }
             item.kind = icons.kinds[item.kind]
             if entry.source.name == 'codeium' then
               item.kind = icons.misc.codeium
