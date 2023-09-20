@@ -11,6 +11,7 @@ return {
       },
     },
   },
+
   -- floating winbar
   {
     'b0o/incline.nvim',
