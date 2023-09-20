@@ -1,85 +1,15 @@
 return {
   {
-    'folke/edgy.nvim',
-    event = 'VeryLazy',
-    init = function()
-      vim.opt.laststatus = 3
-      vim.opt.splitkeep = 'screen'
-    end,
+    'nvim-neo-tree/neo-tree.nvim',
     opts = {
-      bottom = {
-        -- toggleterm / lazyterm at the bottom with a height of 40% of the screen
-        {
-          ft = 'toggleterm',
-          size = {
-            height = 20,
-          },
-          pinned = true,
-          -- exclude floating windows
-          filter = function(buf, win)
-            return vim.api.nvim_win_get_config(win).relative == ''
-          end,
+      filesystem = {
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = false,
         },
-        {
-          ft = 'lazyterm',
-          title = 'LazyTerm',
-          size = { height = 0.4 },
-          filter = function(buf)
-            return not vim.b[buf].lazyterm_cmd
-          end,
-        },
-        'Trouble',
-        { ft = 'qf', title = 'QuickFix' },
-        {
-          ft = 'help',
-          size = { height = 20 },
-          -- only show help buffers
-          filter = function(buf)
-            return vim.bo[buf].buftype == 'help'
-          end,
-        },
-        { ft = 'spectre_panel', size = { height = 0.4 } },
-      },
-      left = {
-        -- Neo-tree filesystem always takes half the screen height
-        {
-          title = 'Neo-Tree',
-          ft = 'neo-tree',
-          filter = function(buf)
-            return vim.b[buf].neo_tree_source == 'filesystem'
-          end,
-          size = { height = 0.7 },
-        },
-        {
-          title = 'Neo-Tree Git',
-          ft = 'neo-tree',
-          filter = function(buf)
-            return vim.b[buf].neo_tree_source == 'git_status'
-          end,
-          pinned = true,
-          open = 'Neotree position=right git_status',
-        },
-        {
-          title = 'Neo-Tree Buffers',
-          ft = 'neo-tree',
-          filter = function(buf)
-            return vim.b[buf].neo_tree_source == 'buffers'
-          end,
-          pinned = true,
-          open = 'Neotree position=top buffers',
-        },
-        {
-          ft = 'Outline',
-          pinned = false,
-          open = 'SymbolsOutlineOpen',
-        },
-        -- any other neo-tree windows
-        'neo-tree',
       },
     },
-  },
-  {
-    'simrat39/symbols-outline.nvim',
   },
   -- floating winbar
   {
@@ -104,25 +34,6 @@ return {
       })
     end,
   },
-
-  -- auto-resize windows
-  {
-    'anuvyklack/windows.nvim',
-    event = 'WinNew',
-    dependencies = {
-      { 'anuvyklack/middleclass' },
-      { 'anuvyklack/animation.nvim', enabled = false },
-    },
-    keys = { { '<leader>wm', '<cmd>WindowsMaximize<cr>', desc = 'Zoom' } },
-    config = function()
-      vim.o.winwidth = 5
-      vim.o.equalalways = false
-      require('windows').setup({
-        animation = { enable = false, duration = 150 },
-      })
-    end,
-  },
-
   -- scrollbar
   { 'lewis6991/satellite.nvim', opts = {}, event = 'VeryLazy', enabled = false },
   {
@@ -163,42 +74,53 @@ return {
       })
     end,
   },
-
-  -- style windows with different colorschemes
+  {
+    'utilyre/barbecue.nvim',
+    name = 'barbecue',
+    version = '*',
+    theme = 'catppuccin',
+    dependencies = {
+      'SmiteshP/nvim-navic',
+      'nvim-tree/nvim-web-devicons',
+    },
+    opts = {
+      show_dirname = false,
+      show_basename = false,
+    },
+  },
+  {
+    'm4xshen/smartcolumn.nvim',
+    opts = {
+      colorcolumn = '100',
+      disabled_filetypes = {
+        'netrw',
+        'NvimTree',
+        'Lazy',
+        'mason',
+        'help',
+        'text',
+        'tex',
+      },
+      scope = 'window',
+    },
+  },
   -- {
-  --   'folke/styler.nvim',
-  --   event = 'VeryLazy',
+  --   'akinsho/bufferline.nvim',
+  --   version = 'v3.*',
+  --   dependencies = 'nvim-tree/nvim-web-devicons',
   --   opts = {
-  --     themes = {
-  --       markdown = { colorscheme = 'catppuccin' },
-  --       help = { colorscheme = 'catppuccin', background = 'dark' },
+  --     options = {
+  --       separator_style = 'slant',
+  --       mode = 'tabs',
+  --       offsets = {
+  --         {
+  --           filetype = 'NvimTree',
+  --           text = ' File Explorer',
+  --           highlight = 'Directory',
+  --           separator = false,
+  --         },
+  --       },
   --     },
   --   },
   -- },
-
-  -- silly drops
-  {
-    'folke/drop.nvim',
-    enabled = false,
-    event = 'VeryLazy',
-    config = function()
-      math.randomseed(os.time())
-      -- local theme = ({ "stars", "snow" })[math.random(1, 3)]
-      require('drop').setup({ theme = 'spring' })
-    end,
-  },
-
-  -- lualine
-  -- {
-  --   'nvim-lualine/lualine.nvim',
-  --   opts = function(_, opts)
-  --     table.insert(opts.sections.lualine_x, {
-  --       function()
-  --         return require('util.dashboard').status()
-  --       end,
-  --     })
-  --   end,
-  -- },
-  { 'akinsho/toggleterm.nvim', version = '*', config = true },
-  { 'nvim-pack/nvim-spectre' },
 }

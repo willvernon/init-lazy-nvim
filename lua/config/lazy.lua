@@ -15,7 +15,7 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.formatting.prettier' },
     { import = 'lazyvim.plugins.extras.lang.typescript' },
     { import = 'lazyvim.plugins.extras.linting.eslint' },
-    -- { import = 'lazyvim.plugins.extras.coding.copilot' },
+    { import = 'lazyvim.plugins.extras.coding.copilot' },
     { import = 'lazyvim.plugins.extras.lang.json' },
     { import = 'lazyvim.plugins.extras.lang.rust' },
     { import = 'lazyvim.plugins.extras.lang.tailwind' },
@@ -40,7 +40,7 @@ require('lazy').setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { 'sonokai', 'monokai-pro', 'tokyonight', 'habamax' } },
+  install = { colorscheme = { 'monokai-pro', 'sonokai', 'monokai-pro', 'tokyonight', 'habamax' } },
   ui = {
     -- a number <1 is a percentage., >1 is a fixed size
     size = { width = 0.8, height = 0.8 },
@@ -75,7 +75,7 @@ require('lazy').setup({
       },
     },
     custom_keys = {
-      ['<Tab>'] = false,
+      -- ['<Tab>'] = false,
     },
     checker = { enabled = true }, -- automatically check for plugin updates
     performance = {
