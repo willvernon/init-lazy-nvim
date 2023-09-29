@@ -19,7 +19,7 @@ vim.opt.cursorline = false
 -- end
 --
 --
-vim.cmd([[highlight LineNr guifg=#f0f0f0]])
+vim.cmd([[highlight LineNr guifg=#FB617E]])
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 10

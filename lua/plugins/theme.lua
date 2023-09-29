@@ -9,6 +9,46 @@ end
 return {
   -- Lazy
   {
+    'sainnhe/sonokai',
+  },
+  {
+    'tokyonight.nvim',
+    priority = 1000,
+    opts = function()
+      return {
+        style = 'night',
+        transparent = true,
+        styles = {
+          sidebars = 'transparent',
+          floats = 'transparent',
+        },
+        sidebars = {
+          'qf',
+          'vista_kind',
+          'terminal',
+          'spectre_panel',
+          'startuptime',
+          'Outline',
+        },
+        on_highlights = function(hl, c)
+          hl.CursorLineNr = { fg = c.orange, bold = true }
+          hl.LineNr = { fg = c.orange, bold = true }
+          hl.LineNrAbove = { fg = c.fg_gutter }
+          hl.LineNrBelow = { fg = c.fg_gutter }
+          local prompt = '#2d3149'
+          hl.TelescopeNormal = { bg = c.bg_dark, fg = c.fg_dark }
+          hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }
+          hl.TelescopePromptNormal = { bg = prompt }
+          hl.TelescopePromptBorder = { bg = prompt, fg = prompt }
+          hl.TelescopePromptTitle = { bg = c.fg_gutter, fg = c.orange }
+          hl.TelescopePreviewTitle = { bg = c.bg_dark, fg = c.bg_dark }
+          hl.TelescopeResultsTitle = { bg = c.bg_dark, fg = c.bg_dark }
+        end,
+      }
+    end,
+  },
+
+  {
     'loctvl842/monokai-pro.nvim',
     config = function()
       require('monokai-pro').setup({
@@ -57,58 +97,7 @@ return {
       })
     end,
   },
-  {
-    'sainnhe/sonokai',
-  },
-  -- {
-  --   'loctvl842/monokai-pro.nvim',
-  --   lazy = false,
-  --   priority = 1000,
-  --   keys = { { '<leader>um', '<cmd>MonokaiProSelect<cr>', desc = 'Select Moonokai pro filter' } },
-  --   config = function()
-  --     local monokai = require('monokai-pro')
-  --     monokai.setup({
-  --       transparent_background = true,
-  --       devicons = true,
-  --       filter = 'octagon', -- classic | octagon | pro | machine | ristretto | spectrum
-  --       day_night = {
-  --         enable = false,
-  --         day_filter = 'octagon',
-  --         night_filter = 'spectrum',
-  --       },
-  --       inc_search = 'background', -- underline | background
-  --       background_clear = { 'nvim-tree', 'neo-tree', 'bufferline' },
-  --       plugins = {
-  --         bufferline = {
-  --           underline_selected = true,
-  --           underline_visible = true,
-  --           underline_fill = true,
-  --           bold = false,
-  --         },
-  --         indent_blankline = {
-  --           context_highlight = 'pro', -- default | pro
-  --           context_start_underline = true,
-  --         },
-  --       },
-  --       override = function(c)
-  --         return {
-  --           ColorColumn = { bg = c.editor.background },
-  --           -- Mine
-  --           DashboardRecent = { fg = c.base.magenta },
-  --           DashboardProject = { fg = c.base.blue },
-  --           DashboardConfiguration = { fg = c.base.white },
-  --           DashboardSession = { fg = c.base.green },
-  --           DashboardLazy = { fg = c.base.cyan },
-  --           DashboardServer = { fg = c.base.yellow },
-  --           DashboardQuit = { fg = c.base.red },
-  --           -- Codeium Icon
-  --           CmpItemKindVariable = { fg = '#09B6A2' },
-  --         }
-  --       end,
-  --     })
-  --     monokai.load()
-  --   end,
-  -- },
+  { 'projekt0n/github-nvim-theme' },
 
   {
     -- https://github.com/catppuccin/nvim
@@ -122,6 +111,29 @@ return {
       },
     },
   },
+  --   {
+  --     'ray-x/starry.nvim',
+  --     lazy = true,
+  --     setup = function()
+  --       -- see example setup below
+  --     end,
+  --   },
+  --   vim.cmd([[
+  -- let starry_italic_comments=v:true
+  -- let starry_italic_string=v:true
+  -- let starry_italic_keywords=v:true
+  -- let starry_italic_functions=v:true
+  -- let starry_italic_variables=v:true
+  -- let starry_contrast=v:false
+  -- let starry_borders=v:false
+  -- let starry_disable_background=v:true
+  -- let starry_style_fix=v:true  "disable random loading
+  -- let starry_darker_contrast=v:false
+  -- let starry_set_hl=v:false " Note: enable for nvim 0.6+, it is faster (loading time down to 4~6s from 7~11s), but it does
+  -- " not overwrite old values and may has some side effects
+  -- let starry_deep_black=v:true
+  -- " other themes: dracula, oceanic, dracula_blood, 'deep ocean', darker, palenight, monokai, mariana, emerald, middlenight_blue
+  -- ]]),
   {
     'LazyVim/LazyVim',
     opts = function(_, opts)
@@ -129,7 +141,7 @@ return {
         -- colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
         opts.colorscheme = 'sonokai'
       else
-        opts.colorscheme = 'vscode'
+        opts.colorscheme = 'github_light'
       end
     end,
   },

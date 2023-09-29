@@ -46,4 +46,4 @@ vim.keymap.set('n', '<M-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease window 
 vim.keymap.set('n', '<M-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease window width' })
 vim.keymap.set('n', '<M-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase window width' })
 
-vim.keymap.set('i', 'xx', '<esc>', { noremap = true })
+vim.keymap.set('i', 'jj', '<esc>', { noremap = true })

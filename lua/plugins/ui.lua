@@ -7,53 +7,62 @@ return {
           visible = true,
           hide_dotfiles = false,
           hide_gitignored = false,
+          enbale_git_status = true,
+          sort_function = function(a, b)
+            if a.type == b.type then
+              return a.path > b.path
+            else
+              return a.type > b.type
+            end
+          end, -- this sorts files and directories descendantly
         },
+        window = { position = 'left' },
       },
     },
   },
 
   -- floating winbar
-  {
-    'b0o/incline.nvim',
-    event = 'BufReadPre',
-    enabled = true,
-    config = function()
-      local colors = require('tokyonight.colors').setup()
-      require('incline').setup({
-        highlight = {
-          groups = {
-            InclineNormal = { guibg = '#FB617E', guifg = colors.black },
-            InclineNormalNC = { guifg = '#FB617E', guibg = colors.black },
-          },
-        },
-        window = { margin = { vertical = 0, horizontal = 1 } },
-        render = function(props)
-          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
-          local icon, color = require('nvim-web-devicons').get_icon_color(filename)
-          return { { icon, guifg = color }, { ' ' }, { filename } }
-        end,
-      })
-    end,
-  },
+  -- {
+  --   'b0o/incline.nvim',
+  --   event = 'BufReadPre',
+  --   enabled = true,
+  --   config = function()
+  --     local colors = require('tokyonight.colors').setup()
+  --     require('incline').setup({
+  --       highlight = {
+  --         groups = {
+  --           InclineNormal = { guibg = '#FB617E', guifg = colors.black },
+  --           InclineNormalNC = { guifg = '#FB617E', guibg = colors.black },
+  --         },
+  --       },
+  --       window = { margin = { vertical = 0, horizontal = 1 } },
+  --       render = function(props)
+  --         local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
+  --         local icon, color = require('nvim-web-devicons').get_icon_color(filename)
+  --         return { { icon, guifg = color }, { ' ' }, { filename } }
+  --       end,
+  --     })
+  --   end,
+  -- },
   -- scrollbar
   { 'lewis6991/satellite.nvim', opts = {}, event = 'VeryLazy', enabled = false },
-  {
-    'echasnovski/mini.map',
-    main = 'mini.map',
-    event = 'VeryLazy',
-    enabled = false,
-    config = function()
-      local map = require('mini.map')
-      map.setup({
-        integrations = {
-          map.gen_integration.builtin_search(),
-          map.gen_integration.gitsigns(),
-          map.gen_integration.diagnostic(),
-        },
-      })
-      map.open()
-    end,
-  },
+  -- {
+  --   'echasnovski/mini.map',
+  --   main = 'mini.map',
+  --   event = 'VeryLazy',
+  --   enabled = false,
+  --   config = function()
+  --     local map = require('mini.map')
+  --     map.setup({
+  --       integrations = {
+  --         map.gen_integration.builtin_search(),
+  --         map.gen_integration.gitsigns(),
+  --         map.gen_integration.diagnostic(),
+  --       },
+  --     })
+  --     map.open()
+  --   end,
+  -- },
   {
     'petertriho/nvim-scrollbar',
     event = 'BufReadPost',
