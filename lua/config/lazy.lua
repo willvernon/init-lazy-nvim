@@ -9,6 +9,17 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require('lazy').setup({
   spec = {
+    -- {
+    --   'LazyVim/LazyVim',
+    --   import = 'lazyvim.plugins',
+    --   opts = {
+    --     colorscheme = 'solarized-osaka',
+    --     news = {
+    --       lazyvim = true,
+    --       neovim = true,
+    --     },
+    --   },
+    -- },
     -- add LazyVim and import its plugins
     { 'LazyVim/LazyVim', import = 'lazyvim.plugins' },
     -- import any extras modules here
@@ -40,7 +51,7 @@ require('lazy').setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { 'monokai-pro', 'sonokai', 'monokai-pro', 'tokyonight', 'habamax' } },
+  install = { colorscheme = { 'monokai-pro', 'sonokai', 'tokyonight', 'habamax' } },
   ui = {
     -- a number <1 is a percentage., >1 is a fixed size
     size = { width = 0.8, height = 0.8 },

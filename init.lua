@@ -1,12 +1,10 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require('config.lazy')
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
+if vim.loader then
+  vim.loader.enable()
+end
 
-require('lspconfig').clangd.setup({
-  on_attach = on_attach,
-  capabilities = cmp_nvim_lsp.default_capabilities(),
-  cmd = {
-    'clangd',
-    '--offset-encoding=utf-16',
-  },
-})
+_G.dd = function(...)
+  require('util.debug').dump(...)
+end
+vim.print = _G.dd
+
+require('config.lazy')
