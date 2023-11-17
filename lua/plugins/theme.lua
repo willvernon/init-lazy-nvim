@@ -1,8 +1,15 @@
+local os_is_dark = function()
+  return (vim.call(
+    'system',
+    [[echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')]]
+  )):find('dark') ~= nil
+end
+
 return {
+
   {
     'craftzdog/solarized-osaka.nvim',
     lazy = true,
-    priority = 1000,
     opts = function()
       return {
         transparent = true,
@@ -15,7 +22,6 @@ return {
   },
   {
     'tokyonight.nvim',
-    priority = 1000,
     opts = function()
       return {
         style = 'night',
@@ -52,6 +58,7 @@ return {
 
   {
     'loctvl842/monokai-pro.nvim',
+    priority = 1000,
     config = function()
       require('monokai-pro').setup({
         transparent_background = true,
@@ -136,4 +143,15 @@ return {
   -- let starry_deep_black=v:true
   -- " other themes: dracula, oceanic, dracula_blood, 'deep ocean', darker, palenight, monokai, mariana, emerald, middlenight_blue
   -- ]]),
+  {
+    'LazyVim/LazyVim',
+    opts = function(_, opts)
+      if os_is_dark() then
+        -- colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+        opts.colorscheme = 'monokai-pro-ristretto'
+      else
+        opts.colorscheme = 'github_light'
+      end
+    end,
+  },
 }

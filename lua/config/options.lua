@@ -25,16 +25,16 @@ vim.o.showcmdloc = 'statusline'
 vim.o.winbar = '%{%v:lua.require\'nvim-navic\'.get_location()%}'
 vim.opt.swapfile = false
 
-vim.opt.listchars = {
-  space = '.',
-  eol = '↲',
-  nbsp = '␣',
-  trail = '·',
-  precedes = '←',
-  extends = '→',
-  tab = '¬ ',
-  conceal = '※',
-}
+-- vim.opt.listchars = {
+--   space = '.',
+--   eol = '↲',
+--   nbsp = '␣',
+--   trail = '·',
+--   precedes = '←',
+--   extends = '→',
+--   tab = '¬ ',
+--   conceal = '※',
+-- }
 vim.opt.list = true
 
 vim.g.mapleader = ' '
@@ -70,7 +70,6 @@ vim.opt.wildignore:append({ '*/node_modules/*' })
 vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new windows right of current
 vim.opt.splitkeep = 'cursor'
-vim.opt.mouse = ''
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
